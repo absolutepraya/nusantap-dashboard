@@ -9,8 +9,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        
+        custblack: "#171a1c",
+        custgray1: "#636b74",
+        custgray2: "#32383e",
+
+        first: "#fbfcfe",
+        second: "#f0f4f8",
+        third: "#dde7ee",
+
+        custblue: "#0b6bcb",
+        custorange: "#f77b28",
+        green: "#37c1bb",
+        lime: "#d1dd25"
       },
     },
   },
