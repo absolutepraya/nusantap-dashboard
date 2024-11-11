@@ -193,14 +193,19 @@ export default function Home() {
 					defaultValue={2}
 					sx={{ bgcolor: 'transparent' }}
 				>
+					<div className='w-full flex justify-center'>
+
+					</div>
 					<TabList
 						disableUnderline
 						sx={{
 							p: 0.5,
 							gap: 0.5,
-							borderRadius: 'md',
+							borderRadius: 'xl',
 							bgcolor: 'background.level1',
 							justifyContent: 'center',
+							width: 'fit-content',
+							boxShadow: 'sm',
 							[`& .${tabClasses.root}[aria-selected="true"]`]: {
 								boxShadow: 'sm',
 								bgcolor: 'background.surface',
