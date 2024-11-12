@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>NuSantap - Dashboard</title>
-		<link rel="icon" href="/logo.svg" />
+		<link
+			rel="icon"
+			href="/logo.svg"
+		/>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<style>
 			.shadow-custom {
@@ -70,7 +73,7 @@
 						<span>Hasil Scan</span>
 					</a>
 					<a
-						href="/create-menu"
+						href="/generate-menu"
 						class="flex items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
 					>
 						<svg
@@ -83,17 +86,16 @@
 							stroke-width="2"
 							stroke-linecap="round"
 							stroke-linejoin="round"
-							class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-sparkles"
 						>
 							<path
 								stroke="none"
 								d="M0 0h24v24H0z"
 								fill="none"
 							/>
-							<path d="M12 5l0 14" />
-							<path d="M5 12l14 0" />
+							<path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" />
 						</svg>
-						<span>Buat Menu</span>
+						<span>Generate Menu</span>
 					</a>
 					<a
 						href="/prevalence-map"
@@ -228,11 +230,31 @@
 		</div>
 
 		<!-- Main Content -->
-		<div class="ml-60 flex-1 px-10 py-8 flex flex-col space-y-6 overflow-auto">
+		<div class="ml-60 flex flex-1 flex-col space-y-6 overflow-auto px-10 py-8">
 			<div class="flex w-full flex-row items-center justify-between">
 				<p class="text-lg font-semibold text-[#636b74]">Selamat datang, Admin <span class="font-bold text-[#0b6bcb]">Jawa Barat</span> 👋🏻</p>
 				<button class="flex flex-row items-center rounded-md bg-[#0b6bcb] px-3 py-[6px] pr-3 text-sm font-semibold text-white hover:bg-[#3156a3] active:bg-[#1f3e7d]">
-					<svg  xmlns="http://www.w3.org/2000/svg"  width="16"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="#ffffff"  stroke-width="2.5"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-download mr-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="#ffffff"
+						stroke-width="2.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="icon icon-tabler icons-tabler-outline icon-tabler-download mr-2"
+					>
+						<path
+							stroke="none"
+							d="M0 0h24v24H0z"
+							fill="none"
+						/>
+						<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+						<path d="M7 11l5 5l5 -5" />
+						<path d="M12 4l0 12" />
+					</svg>
 					<p>Download PDF</p>
 				</button>
 			</div>
