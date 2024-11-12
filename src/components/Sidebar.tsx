@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging } from '@tabler/icons-react';
 import Link from 'next/link';
