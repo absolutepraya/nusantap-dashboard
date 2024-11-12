@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
-import { IconFingerprintScan, IconSquareRoundedPlus, IconMap2, IconScan, IconPlus, IconMap, IconLifebuoy, IconSettings, IconSettings2, IconSettingsFilled, IconBellRinging, IconUser, IconUserFilled } from '@tabler/icons-react';
+import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging } from '@tabler/icons-react';
 import Link from 'next/link';
 
 interface SidebarProps {
@@ -10,13 +10,14 @@ interface SidebarProps {
 
 export default function Sidebar({ location }: SidebarProps) {
 	return (
-		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first px-4 py-4 shadow">
+		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow">
 			{/* <img
 				src="/elements/sidebarbg.svg"
 				alt="Background"
 				className="absolute top-0 left-0 w-full h-full object-cover -z-10"
 			/> */}
-			<div className="flex w-full flex-col space-y-4">
+
+			<div className="flex w-full flex-col space-y-4 px-4">
 				{/* Title bar */}
 				<div className="flex flex-row items-center space-x-3">
 					<Image
@@ -72,9 +73,9 @@ export default function Sidebar({ location }: SidebarProps) {
 				</div>
 			</div>
 
-			<div className="flex w-full flex-col space-y-4 text-sm">
+			<div className="flex w-full flex-col text-sm">
 				{/* Menu bar */}
-				<div className="flex w-full flex-col space-y-2 text-sm font-semibold">
+				<div className="flex w-full flex-col space-y-2 px-4 text-sm font-semibold mb-4">
 					<button className="flex cursor-not-allowed items-center justify-start space-x-2 rounded-md px-3 py-2 hover:bg-second">
 						<IconBellRinging
 							size={20}
@@ -99,12 +100,14 @@ export default function Sidebar({ location }: SidebarProps) {
 				</div>
 
 				{/* Line */}
-				<div className="h-[1px] w-full rounded-full bg-gray-300" />
+				<div className="w-full px-4">
+					<div className="h-[1px] w-full rounded-full bg-gray-300" />
+				</div>
 
 				{/* Profile */}
-				<div className="border-top-1 w-full">
+				<div className="border-top-1 w-full hover:bg-second flex justify-center py-4 cursor-pointer select-none active:bg-third">
 					<div className="flex flex-row items-center space-x-2">
-						<div className="h-9 w-9 rounded-full bg-gray-500 overflow-hidden flex items-center justify-center">
+						<div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-500">
 							<Image
 								src="/images/pfp.jpg"
 								alt="PFP"
