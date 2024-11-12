@@ -9,7 +9,7 @@ interface SidebarProps {
 
 export default function Sidebar({ location }: SidebarProps) {
 	return (
-		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow">
+		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow z-50">
 			{/* <img
 				src="/elements/sidebarbg.svg"
 				alt="Background"

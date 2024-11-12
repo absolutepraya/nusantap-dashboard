@@ -20,6 +20,7 @@
 		"@radix-ui/react-slot": "^1.1.0",
 		"@tabler/icons-react": "^3.21.0",
 		"@yudiel/react-qr-scanner": "^2.0.8",
+		"async-g-i-s": "^1.5.4",
 		"chart.js": "^4.4.6",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
@@ -33,6 +34,7 @@
 		"react-dom": "^18.3.1",
 		"react-qr-scanner": "^1.0.0-alpha.11",
 		"shadcn": "^1.0.0",
+		"swiper": "^11.1.14",
 		"tailwind-merge": "^2.5.4",
 		"tailwindcss-animate": "^1.0.7"
 	},
