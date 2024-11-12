@@ -16,13 +16,12 @@ interface LineChartProps {
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export default function LineChart({ lineChartData, height, width }: LineChartProps) {
-    const chartRef = useRef(null);
 
     return (
 		<Line
-			ref={chartRef}
 			options={{
 				maintainAspectRatio: false,
+				responsive: true,
 				plugins: {
 					legend: {
 						display: true,

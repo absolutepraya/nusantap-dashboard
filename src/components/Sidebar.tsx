@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 import { IconFingerprintScan, IconSquareRoundedPlus, IconMap2, IconScan, IconPlus, IconMap, IconLifebuoy, IconSettings, IconSettings2, IconSettingsFilled, IconBellRinging, IconUser, IconUserFilled } from '@tabler/icons-react';
 import Link from 'next/link';
@@ -9,6 +11,11 @@ interface SidebarProps {
 export default function Sidebar({ location }: SidebarProps) {
 	return (
 		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first px-4 py-4 shadow">
+			{/* <img
+				src="/elements/sidebarbg.svg"
+				alt="Background"
+				className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+			/> */}
 			<div className="flex w-full flex-col space-y-4">
 				{/* Title bar */}
 				<div className="flex flex-row items-center space-x-3">

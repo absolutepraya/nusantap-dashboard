@@ -64,19 +64,25 @@ export default function Home() {
 					</TabList>
 
 					<TabPanel
+						// Tab Utama
 						value={0}
 						sx={{
 							p: 0,
 							pt: 3,
 						}}
 					>
-						<LineChart
-							lineChartData={lineChartData}
-							height="400px "
-						/>
+						<div className="h-[400px] w-full mb-8">
+							<LineChart
+								lineChartData={lineChartData}
+								height="400px"
+							/>
+						</div>
+
+						<CustomTable data={dummyTableData} />
 					</TabPanel>
 
 					<TabPanel
+						// Tab Grafik
 						value={1}
 						sx={{
 							p: 0,
@@ -87,6 +93,7 @@ export default function Home() {
 					</TabPanel>
 
 					<TabPanel
+						// Tab Tabel
 						value={2}
 						sx={{
 							p: 0,
