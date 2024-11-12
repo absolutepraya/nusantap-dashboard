@@ -51,7 +51,7 @@ export default function Sidebar({ location }: SidebarProps) {
 					</Link>
 					<Link
 						className={`${location == 'generate-menu' ? 'bg-third' : 'hover:bg-second'} flex items-center justify-start space-x-2 rounded-md px-3 py-2`}
-						href="/create-menu"
+						href="/generate-menu"
 					>
 						<IconSparkles
 							size={20}
