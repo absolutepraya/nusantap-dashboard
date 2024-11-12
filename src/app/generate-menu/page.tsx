@@ -135,7 +135,7 @@ export default function CreateMenu() {
 					{dummyMenus.map((menu, index) => (
 						<div
 							key={index}
-							className="flex items-center justify-center bg-second rounded-md shadow h-12"
+							className="flex items-center justify-center bg-second rounded-md shadow h-12 hover:bg-third hover:scale-105 transition-transform"
 						>
 							<p className="text-sm font-semibold">{menu}</p>
 						</div>
