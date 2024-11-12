@@ -1,6 +1,7 @@
 {
 	"rewrites": [
 		{ "source": "/api/(.*)", "destination": "/api/proxy.js" },
+		{ "source": "/prevalence-map", "destination": "/prevalence.html" },
 		{ "source": "/(.*)", "destination": "/" }
 	]
 }
