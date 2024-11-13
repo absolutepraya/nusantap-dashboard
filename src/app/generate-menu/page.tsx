@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
 import OpenAI from 'openai';
+import { useProfileState } from '@/stores/globalState';
 
 const dummyData = [
 	{
@@ -39,19 +40,8 @@ const dummyData = [
 
 const dummyMenus = ['Nasi Goreng', 'Satay Ayam', 'Rendang', 'Gado-Gado', 'Soto Ayam', 'Bakso', 'Mie Goreng', 'Nasi Uduk', 'Pecel', 'Ayam Goreng', 'Sambal', 'Babi Guling', 'Sate Padang', 'Lontong Sayur', 'Pempek', 'Nasi Kuning', 'Tahu Goreng', 'Bubur Ayam', 'Martabak Manis', 'Es Cendol', 'Kue Lapis', 'Serabi', 'Gudeg Yogyakarta', 'Ayam Balado', 'Ikan Bakar', 'Soto Betawi', 'Nasi Campur', 'Nasi Liwet', 'Ayam Bakar Taliwang', 'Tumpeng', 'Kerak Telor', 'Sayur Asem', 'Bakmi Jawa', 'Soto Mie', 'Karedok', 'Kue Putu', 'Kue Cubit', 'Bika Ambon', 'Ayam Taliwang', 'Soto Banjar', 'Kue Serabi', 'Babi Kecap', 'Nasi Bebek', 'Sate Lilit', 'Ayam Betutu', 'Nasi Goreng Kampung', 'Nasi Padang', 'Tempeh Goreng', 'Sate Kambing', 'Lumpia Semarang', 'Sop Buntut', 'Bakso Malang'];
 
-// const client = new OpenAI({
-// 	apiKey: process.env['OPENAI_API_KEY'],
-// });
-
 export default function CreateMenu() {
-	// async function handleOpenAIRequest() {
-	// 	const response = await client.completions.create({
-	// 		messages: [{ role: 'user', content: 'Say this is a test' }],
-	// 		model: 'gpt-3.5-turbo',
-	// 	});
-
-	// 	console.log(response.data.choices[0].text);
-	// }
+	const { profileIndex, setProfileIndex } = useProfileState();
 
 	return (
 		<div className="max-w-screen flex w-screen flex-row bg-white">
@@ -61,7 +51,7 @@ export default function CreateMenu() {
 			<div className="ml-60 flex w-full flex-col space-y-6 px-10 py-8">
 				<div className="flex w-full flex-row items-center justify-between">
 					<p className="text-lg font-semibold text-custgray1">
-						Selamat datang, Admin <span className="font-bold text-custblue">Jawa Barat</span> 👋🏻
+						Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
 					</p>
 				</div>
 
@@ -73,7 +63,7 @@ export default function CreateMenu() {
 							size={24}
 							className=""
 						/>
-						<p className="ml-2 pr-1 text font-semibold">Generate Semua Menu</p>
+						<p className="text ml-2 pr-1 font-semibold">Generate Semua Menu</p>
 						{/* Emboss Effect */}
 						<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
 						<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
@@ -85,7 +75,7 @@ export default function CreateMenu() {
 					<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
 				</div>
 
-				<div className="relative flex w-full justify-center rounded-xl bg-third py-8 shadow-lg">
+				<div className="relative flex w-full justify-center rounded-xl py-8">
 					<Swiper
 						modules={[Navigation]}
 						slidesPerView={3}
@@ -153,7 +143,7 @@ export default function CreateMenu() {
 				</div>
 
 				<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
-					<p>50 Menu Generasi AI</p>
+					<p>Menu Generasi AI</p>
 					<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
 				</div>
 
@@ -161,7 +151,7 @@ export default function CreateMenu() {
 					{dummyMenus.map((menu, index) => (
 						<div
 							key={index}
-							className="flex items-center justify-center bg-second rounded-md shadow h-12 hover:bg-third hover:scale-105 transition-transform"
+							className="flex h-12 items-center justify-center rounded-md bg-second shadow transition-transform hover:scale-105 hover:bg-third"
 						>
 							<p className="text-sm font-semibold">{menu}</p>
 						</div>

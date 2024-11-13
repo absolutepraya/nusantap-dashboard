@@ -1,21 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 import Image from 'next/image';
-import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging, IconSparkles } from '@tabler/icons-react';
+import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging, IconSparkles, IconSwitchHorizontal } from '@tabler/icons-react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useProfileState } from '@/stores/globalState';
 
 interface SidebarProps {
 	location: string;
 }
 
 export default function Sidebar({ location }: SidebarProps) {
-	return (
-		<div className="fixed flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow z-50">
-			{/* <img
-				src="/elements/sidebarbg.svg"
-				alt="Background"
-				className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-			/> */}
+	const [changeProfileDialog, setChangeProfileDialog] = useState(false);
+	const { profileIndex, setProfileIndex } = useProfileState();
 
+	return (
+		<div className="fixed z-50 flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow">
 			<div className="flex w-full flex-col space-y-4 px-4">
 				{/* Title bar */}
 				<div className="flex flex-row items-center space-x-3">
@@ -61,7 +61,7 @@ export default function Sidebar({ location }: SidebarProps) {
 					</Link>
 					<Link
 						className={`${location == 'prevalence-map' ? 'bg-third' : 'hover:bg-second'} flex items-center justify-start space-x-2 rounded-md px-3 py-2`}
-						href="/prevalence-map"
+						href={profileIndex == 0 ? '/prevalence-map/jabar' : '/prevalence-map/ntt'}
 					>
 						<IconMap
 							size={20}
@@ -103,12 +103,85 @@ export default function Sidebar({ location }: SidebarProps) {
 					<div className="h-[1px] w-full rounded-full bg-gray-300" />
 				</div>
 
+				{/* Change profile */}
+				{changeProfileDialog && (
+					<div className="absolute bottom-[5.5rem] left-4 flex w-64 flex-col space-y-2 rounded-lg border bg-second px-4 py-3 shadow">
+						<div className="flex flex-row items-center space-x-2">
+							<div className="flex h-5 w-5 items-center justify-center rounded bg-custblue text-white">
+								<IconSwitchHorizontal size={14} />
+							</div>
+							<p className="text-base font-bold">Ganti Profil Admin</p>
+						</div>
+
+						{/* Profil 1 */}
+						<div
+							className={`flex w-full cursor-pointer flex-row items-center space-x-2 rounded-lg border-[2.5px] bg-white py-2 pl-2 ${profileIndex == 0 ? 'border-custblue shadow-lg' : 'border-gray-300'}`}
+							onClick={() => {
+								setProfileIndex(0);
+								setChangeProfileDialog(false);
+							}}
+						>
+							<div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-500">
+								<Image
+									src="/images/pfp.jpg"
+									alt="PFP"
+									width={36}
+									height={36}
+									className="rounded-full"
+								/>
+							</div>
+							<div className="flex flex-col space-y-0">
+								<p className="font-semibold">Daffa A. (Jawa Barat)</p>
+								<p className="text-gray-600">daffa.jabar@nusantap.id</p>
+							</div>
+						</div>
+
+						{/* Profil 2 */}
+						<div
+							className={`flex w-full cursor-pointer flex-row items-center space-x-2 rounded-lg border-[2.5px] bg-white py-2 pl-2 ${profileIndex == 1 ? 'border-custblue shadow-lg' : 'border-gray-300'}`}
+							onClick={() => {
+								setProfileIndex(1);
+								setChangeProfileDialog(false);
+							}}
+						>
+							<div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-500">
+								<Image
+									src="/images/pfp2.jpg"
+									alt="PFP"
+									width={36}
+									height={36}
+									className="rounded-full"
+								/>
+							</div>
+							<div className="flex flex-col space-y-0">
+								<p className="font-semibold">Anwar S. (NTT)</p>
+								<p className="text-gray-600">anwar.ntt@nusantap.id</p>
+							</div>
+						</div>
+
+						<div className="flex h-8 w-full flex-row space-x-2">
+							<div className="justify-cenyer flex h-full w-1/2 cursor-not-allowed items-center justify-center rounded-lg bg-custblue text-white">
+								<p>Tambah Profil</p>
+							</div>
+							<div className="justify-cenyer flex h-full w-1/2 cursor-not-allowed items-center justify-center rounded-lg bg-custblue text-white">
+								<p>Edit Profil</p>
+							</div>
+						</div>
+					</div>
+				)}
+
 				{/* Profile */}
-				<div className="border-top-1 flex w-full cursor-pointer select-none justify-center py-4 hover:bg-second active:bg-third">
+				<div
+					className="border-top-1 relative flex w-full cursor-pointer select-none py-4 pl-4 hover:bg-second active:bg-third"
+					onClick={() => setChangeProfileDialog(!changeProfileDialog)}
+				>
 					<div className="flex flex-row items-center space-x-2">
-						<div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-500">
+						<div className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-500">
+							<div className="absolute -left-1 -top-1 flex h-4 w-4 items-center justify-center rounded bg-custblue text-white">
+								<IconSwitchHorizontal size={12} />
+							</div>
 							<Image
-								src="/images/pfp.jpg"
+								src={profileIndex == 0 ? '/images/pfp.jpg' : '/images/pfp2.jpg'}
 								alt="PFP"
 								width={36}
 								height={36}
@@ -116,8 +189,8 @@ export default function Sidebar({ location }: SidebarProps) {
 							/>
 						</div>
 						<div className="flex flex-col space-y-0">
-							<p className="font-semibold">Daffa A. (Jawa Barat)</p>
-							<p className="text-gray-600">daffa.jabar@nusantap.id</p>
+							<p className="font-semibold">{profileIndex == 0 ? 'Daffa A. (Jawa Barat)' : 'Anwar S. (NTT)'}</p>
+							<p className="text-gray-600">{profileIndex == 0 ? 'daffa.jabar@nusantap.id' : 'anwar.ntt@nusantap.id'}</p>
 						</div>
 					</div>
 				</div>

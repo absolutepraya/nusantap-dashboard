@@ -121,6 +121,14 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 					</tr>
 				</thead>
 				<tbody>
+					{data.length == 0 && (
+						<tr>
+							<td colSpan={7} className="text-center">
+								No data available
+							</td>
+						</tr>
+					)}
+
 					{filteredData.map((item, index) => (
 						<tr key={index}>
 							<td>{index}</td>
