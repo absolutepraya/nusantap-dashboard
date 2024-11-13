@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
+import OpenAI from 'openai';
 
 const dummyData = [
 	{
@@ -37,7 +38,20 @@ const dummyData = [
 
 const dummyMenus = ['Nasi Goreng', 'Satay Ayam', 'Rendang', 'Gado-Gado', 'Soto Ayam', 'Bakso', 'Mie Goreng', 'Nasi Uduk', 'Pecel', 'Ayam Goreng', 'Sambal', 'Babi Guling', 'Sate Padang', 'Lontong Sayur', 'Pempek', 'Nasi Kuning', 'Tahu Goreng', 'Bubur Ayam', 'Martabak Manis', 'Es Cendol', 'Kue Lapis', 'Serabi', 'Gudeg Yogyakarta', 'Ayam Balado', 'Ikan Bakar', 'Soto Betawi', 'Nasi Campur', 'Nasi Liwet', 'Ayam Bakar Taliwang', 'Tumpeng', 'Kerak Telor', 'Sayur Asem', 'Bakmi Jawa', 'Soto Mie', 'Karedok', 'Kue Putu', 'Kue Cubit', 'Bika Ambon', 'Ayam Taliwang', 'Soto Banjar', 'Kue Serabi', 'Babi Kecap', 'Nasi Bebek', 'Sate Lilit', 'Ayam Betutu', 'Nasi Goreng Kampung', 'Nasi Padang', 'Tempeh Goreng', 'Sate Kambing', 'Lumpia Semarang', 'Sop Buntut', 'Bakso Malang'];
 
+const client = new OpenAI({
+	apiKey: process.env['OPENAI_API_KEY'],
+});
+
 export default function CreateMenu() {
+	// async function handleOpenAIRequest() {
+	// 	const response = await client.completions.create({
+	// 		messages: [{ role: 'user', content: 'Say this is a test' }],
+	// 		model: 'gpt-3.5-turbo',
+	// 	});
+
+	// 	console.log(response.data.choices[0].text);
+	// }
+
 	return (
 		<div className="max-w-screen flex w-screen flex-row bg-white">
 			<Sidebar location="generate-menu" />
