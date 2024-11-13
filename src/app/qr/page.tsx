@@ -17,6 +17,8 @@ export default function PrevalenceMap(): JSX.Element {
 	const [showSuccess, setShowSuccess] = useState(false);
 	const [currentId, setCurrentId] = useState<string>('');
 	const [popUpShown, setPopUpShown] = useState(false);
+	const [canScan, setCanScan] = useState(true);
+	const [scannedId, setScannedId] = useState<string | null>(null);
 
 	useEffect(() => {
 		console.log('ID: ', id);
@@ -39,16 +41,21 @@ export default function PrevalenceMap(): JSX.Element {
 	const handleScan = (result: string) => {
 		const resultParsed = result.split('-');
 
-		if (resultParsed[0] === 'nstp') {
-			if (popUpShown) return;
+		if (canScan && resultParsed[0] === 'nstp') {
 			if (scanResult === resultParsed[1]) return;
-			setCurrentId(resultParsed[1]);
-			setShowConfirmation(true);
+			if (scannedId !== resultParsed[1]) {
+				setShowConfirmation(true);
+				setCurrentId(resultParsed[1]);
+			}
 		}
 	};
 
 	const handleConfirm = async () => {
 		try {
+			// Disable scanning for 10 seconds
+			setCanScan(false);
+			setPopUpShown(true);
+
 			await set(ref(rtdb, `users/${currentId}`), {
 				scanned: true,
 				timestamp: new Date().toISOString(),
@@ -57,14 +64,20 @@ export default function PrevalenceMap(): JSX.Element {
 			setShowConfirmation(false);
 			setScanResult(currentId);
 			setShowSuccess(true);
+			setScannedId(currentId);
 
-			// Hide success message after 3 seconds
+			// Re-enable scanning after 10 seconds
 			setTimeout(() => {
+				setCanScan(true);
 				setShowSuccess(false);
 				setScanResult(null);
-			}, 3000);
+				setPopUpShown(false);
+			}, 10000);
 		} catch (error) {
 			console.error('Error saving to database:', error);
+			// Reset scanning cooldown if there's an error
+			setCanScan(true);
+			setPopUpShown(false);
 		}
 	};
 
@@ -104,6 +117,22 @@ export default function PrevalenceMap(): JSX.Element {
 										</motion.div>
 										<p className="text-lg font-medium">Successfully Scanned!</p>
 										<p className="text-sm opacity-90">ID: {scanResult}</p>
+									</div>
+								</motion.div>
+							)}
+						</AnimatePresence>
+
+						<AnimatePresence>
+							{popUpShown && !showSuccess && (
+								<motion.div
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									exit={{ opacity: 0 }}
+									className="absolute inset-0 flex items-center justify-center bg-blue-500/80"
+								>
+									<div className="text-center text-white">
+										<p className="text-lg font-medium">Please wait...</p>
+										<p className="text-sm opacity-90">Scanner will be ready in 10 seconds</p>
 									</div>
 								</motion.div>
 							)}
