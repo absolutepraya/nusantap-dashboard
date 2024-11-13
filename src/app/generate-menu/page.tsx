@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import Image from 'next/image';
 import { IconArrowBigLeftLine, IconArrowBigRightLine, IconChevronLeft, IconChevronRight, IconDownload, IconSparkles } from '@tabler/icons-react';
