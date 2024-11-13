@@ -21,6 +21,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Sate Maranggi dengan Cah Bayam dan Apel',
 		harga_total: '15000',
 		nutrisi: 'Energi: 400 kal, Karbohidrat: 60 gr, Protein: 20 gr, Lemak: 10 gr, Vitamin C: 30 mg',
+		image_url: 'https://th.bing.com/th/id/OIP.C5vjDk6Mp2UYbvXpmS4m-gHaGF?rs=1&pid=ImgDetMain',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -48,6 +49,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Gado-Gado dengan Sayur Wortel dan Jeruk',
 		harga_total: '14000',
 		nutrisi: 'Energi: 300 kal, Karbohidrat: 55 gr, Protein: 15 gr, Lemak: 10 gr, Vitamin A: 20 mg',
+		image_url: 'https://i0.wp.com/resepkoki.id/wp-content/uploads/2017/02/Resep-Gado-Gado.jpg?fit=2461%2C2359&ssl=1',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -75,6 +77,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Bakso Bandung dengan Sayur Sawi dan Melon',
 		harga_total: '17000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak: 10 gr, Zat Besi: 15 mg',
+		image_url: 'https://th.bing.com/th/id/OIP._9kwRurM_aJ35_XX5ePu3AHaE6?w=301&h=200&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -102,6 +105,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Rendang Daging dengan Sayur Buncis dan Pisang',
 		harga_total: '17000',
 		nutrisi: 'Energi: 500 kal, Karbohidrat: 60 gr, Protein: 25 gr, Lemak: 20 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.hWAvgCUa_1dPwH6cWX41ZgHaGa?w=231&h=200&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -129,6 +133,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Soto Ayam dengan Sayur Kangkung dan Apel',
 		harga_total: '16000',
 		nutrisi: 'Energi: 300 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak: 10 gr, Vitamin B6: 1 mg',
+		image_url: 'https://image.freepik.com/free-photo/nasi-soto-ayam-soto-medan-is-traditional-chicken-soup-with-rice-from-medan-north-sumatra_464898-893.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -156,6 +161,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Pecel Lele dengan Sayur Kol dan Jeruk',
 		harga_total: '16000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 25 gr, Lemak: 10 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.IZqQvGrOX0zL_3RSNMiMOAHaE8?rs=1&pid=ImgDetMain',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -183,6 +189,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Mie Goreng Jawa dengan Sayur Wortel dan Apel',
 		harga_total: '17000',
 		nutrisi: 'Energi: 400 kal, Karbohidrat: 60 gr, Protein: 20 gr, Lemak: 16 gr',
+		image_url: 'https://img-global.cpcdn.com/recipes/c0be94e707093d41/1502x1064cq70/mie-goreng-jawa-foto-resep-utama.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -210,6 +217,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Gulai Kambing dengan Sayur Buncis dan Pisang',
 		harga_total: '17000',
 		nutrisi: 'Energi: 450 kal, Karbohidrat: 55 gr, Protein: 30 gr, Lemak: 20 gr',
+		image_url: 'https://cdn-2.tstatic.net/tribunnews/foto/bank/images/resep-nasi-gulai.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -237,6 +245,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Ayam Betutu dengan Sayur Sawi dan Apel',
 		harga_total: '17000',
 		nutrisi: 'Energi: 500 kal, Karbohidrat: 60 gr, Protein: 30 gr, Lemak: 25 gr',
+		image_url: 'https://bumimin.com/wp-content/uploads/2020/07/161-1536x1536.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -264,6 +273,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Pempek Palembang dengan Sayur Kol dan Jeruk',
 		harga_total: '15000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak: 20 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.MLo20zRkXHAWjjBYkUn1dAHaFS?w=268&h=192&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -291,6 +301,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Ayam Goreng Kalasan dengan Sayur Kangkung dan Pisang',
 		harga_total: '17000',
 		nutrisi: 'Energi: 400 kal, Karbohidrat: 50 gr, Protein: 30 gr, Lemak: 20 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.oCDCnbN9-KU9Pd67q1gIpQHaFB?rs=1&pid=ImgDetMain',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -322,6 +333,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Goreng Spesial dengan Sayur Sawi dan Jeruk',
 		harga_total: '17000',
 		nutrisi: 'Energi: 450 kal, Karbohidrat: 60 gr, Protein: 25 gr, Lemak: 15 gr',
+		image_url: 'https://img-global.cpcdn.com/recipes/6728739403f125ba/1200x630cq70/photo.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -353,6 +365,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Sop Buntut dengan Sayur Wortel dan Apel',
 		harga_total: '17000',
 		nutrisi: 'Energi: 500 kal, Karbohidrat: 60 gr, Protein: 35 gr, Lemak: 20 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.3Zl0C13mxn61e8d-jtcMkAHaE7?rs=1&pid=ImgDetMain',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -380,6 +393,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Rujak Buah dengan Sayur Timun dan Jeruk',
 		harga_total: '12000',
 		nutrisi: 'Energi: 300 kal, Karbohidrat: 50 gr, Protein: 10 gr, Lemak: 10 gr, Vitamin C: 15 mg',
+		image_url: 'https://th.bing.com/th/id/OIP.7jttfqoqOq04SdTBhMTSBAHaE8?w=278&h=185&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -407,6 +421,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Pisang Goreng dengan Sayur Kangkung dan Apel',
 		harga_total: '10000',
 		nutrisi: 'Energi: 300 kal, Karbohidrat: 50 gr, Protein: 10 gr, Lemak: 20 gr, Vitamin B6: 1 mg',
+		image_url: 'https://i.pinimg.com/736x/58/6a/8e/586a8e78c0ba84068cd255877c973699.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -754,6 +769,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Bakmi Jawa dengan Sayur Wortel dan Apel',
 		harga_total: '16000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak: 15 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.wxRYuc-Vx_c8tYjd_5IPiwAAAA?rs=1&pid=ImgDetMain',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -781,6 +797,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Tim Ikan Tuna Telur Puyuh dengan Sayur Kangkung dan Pisang',
 		harga_total: '17000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 30 gr, Omega-3: 3 gr, Vitamin D: 1 mg',
+		image_url: 'https://img-global.cpcdn.com/recipes/3ea934d5d2c9b536/680x482cq70/tim-ikan-tuna-pedas-foto-resep-utama.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -812,6 +829,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Bubur Soto Ayam Santan dengan Sayur Wortel dan Apel',
 		harga_total: '17000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak sehat: 15 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.xX6HBmcnXLGFgXAkE9my0wHaE7?w=288&h=192&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -839,6 +857,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Bubur Sup Telur Daging Kacang Merah dengan Sayur Sawi dan Jeruk',
 		harga_total: '16000',
 		nutrisi: 'Energi: 400 kal, Karbohidrat: 50 gr, Protein: 20 gr, Lemak: 10 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.JS4bDE4tv6uIMcCdfbcYFQHaFH?w=234&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
@@ -870,6 +889,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Bubur Kanju Rumbi Ayam dan Udang dengan Sayur Kangkung dan Pisang',
 		harga_total: '17000',
 		nutrisi: 'Energi: 450 kal, Karbohidrat: 60 gr, Protein: 30 gr, Lemak: 15 gr',
+		image_url: 'https://th.bing.com/th/id/OIP.K_TPQFxtUWzOIfQkEJKhGgHaII?w=153&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
