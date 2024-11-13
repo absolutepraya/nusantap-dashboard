@@ -99,12 +99,12 @@ export default function PrevalenceMap(): JSX.Element {
 					</div>
 
 					<div className="relative bg-gray-100">
-						<IconScan
+						{/* <IconScan
 							className="absolute right-1/2 top-16 z-[100] translate-x-1/2 bg-[#f3f4f6]"
 							size={36}
 						/>
 
-						<div className="absolute left-[1px] top-[1px] z-[50] h-28 w-20 bg-[#f3f4f6]"></div>
+						<div className="absolute left-[1px] top-[1px] z-[50] h-28 w-20 bg-[#f3f4f6]"></div> */}
 
 						<div
 							id="reader"
