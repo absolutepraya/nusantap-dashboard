@@ -52,6 +52,17 @@ export default function CreateMenu() {
 
 				<div className="flex w-full flex-row items-center justify-between">
 					<p className="text-3xl font-bold">Generate Menu</p>
+					{/* Tombol generate semua menu */}
+					<button className="group relative flex w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-3 py-2 text-white">
+						<IconSparkles
+							size={24}
+							className=""
+						/>
+						<p className="ml-2 pr-1 text font-semibold">Generate Semua Menu</p>
+						{/* Emboss Effect */}
+						<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
+						<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
+					</button>
 				</div>
 
 				<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
