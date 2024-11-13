@@ -80,7 +80,7 @@ export default function Home() {
 			<Sidebar location="/" />
 
 			{/* Main content */}
-			<div className="ml-60 flex h-full w-full flex-col space-y-6 px-10 py-8">
+			<div className="md:ml-60 flex h-full w-full flex-col space-y-6 px-10 py-8">
 				<div className="flex w-full flex-row items-center justify-between">
 					<p className="text-lg font-semibold text-custgray1">
 						Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
@@ -153,7 +153,7 @@ export default function Home() {
 							pt: 3,
 						}}
 					>
-						<LineChart lineChartData={lineChartData} />
+						<LineChart lineChartData={lineChartData} height='500px' />
 					</TabPanel>
 
 					<TabPanel

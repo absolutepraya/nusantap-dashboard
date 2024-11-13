@@ -122,6 +122,42 @@
 						</svg>
 						<span>Peta Prevalensi</span>
 					</a>
+					<a
+						href="/qr?p1=true"
+						class="flex items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#636b74"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-qrcode"
+						>
+							<path
+								stroke="none"
+								d="M0 0h24v24H0z"
+								fill="none"
+							/>
+							<path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M7 17l0 .01" />
+							<path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M7 7l0 .01" />
+							<path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M17 7l0 .01" />
+							<path d="M14 14l3 0" />
+							<path d="M20 14l0 .01" />
+							<path d="M14 14l0 3" />
+							<path d="M14 20l3 0" />
+							<path d="M17 17l3 0" />
+							<path d="M20 17l0 3" />
+						</svg>
+						<span>Scan QR Code</span>
+					</a>
 				</div>
 			</div>
 
@@ -216,7 +252,7 @@
 				</div>
 
 				<!-- Profile Section -->
-				<div class="flex cursor-pointer select-none py-4 pl-4 hover:bg-[#f0f4f8] active:bg-[#dde7ee]">
+				<div class="profilebox flex cursor-pointer select-none py-4 pl-4 hover:bg-[#f0f4f8] active:bg-[#dde7ee]">
 					<div class="flex items-center space-x-2">
 						<div class="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-500">
 							<div class="absolute -left-1 -top-1 flex h-4 w-4 items-center justify-center rounded bg-[#0b6bcb] text-white">
@@ -333,6 +369,20 @@
 				var scriptElement = document.createElement('script');
 				scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 				vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+				// Create an absolute alert div on top of profilebox if the profilebox is clicked
+				const profilebox = document.querySelector('.profilebox');
+				profilebox.addEventListener('click', () => {
+					const alertDiv = document.createElement('div');
+					alertDiv.classList.add('absolute', 'bottom-[5.5rem]', 'left-4', 'flex', 'items-center', 'justify-center', 'bg-red-500', 'text-white', 'font-semibold', 'py-2', 'px-2', 'rounded-lg', 'z-[200]', 'mr-4');
+					alertDiv.innerHTML = '<p>Harap mengganti profil di page menu lain! (misal: di "/" atau "/generate-menu")</p>';
+					profilebox.appendChild(alertDiv);
+
+					// Remove the alertDiv after 2 seconds
+					setTimeout(() => {
+						alertDiv.remove();
+					}, 2000);
+				});
 			</script>
 		</div>
 	</body>

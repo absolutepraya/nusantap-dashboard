@@ -27,7 +27,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 		<div className="flex w-full flex-col">
 			<div className="flex w-full flex-row space-x-2 text-xs">
 				{/* Search bar */}
-				<div className="flex w-2/5 flex-col">
+				<div className="flex w-full flex-col md:w-2/5">
 					<p className="pb-1">Cari nama atau menu</p>
 					<div className="relative mb-4">
 						<IconSearch
@@ -45,7 +45,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 				</div>
 
 				{/* Date Filter */}
-				<div className="flex w-1/5 flex-col">
+				<div className="hidden w-1/5 flex-col md:flex">
 					<label className="pb-1">Filter by date</label>
 					<input
 						type="date"
@@ -56,7 +56,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 				</div>
 
 				{/* Age Range Filter */}
-				<div className="flex w-[20%] flex-col">
+				<div className="hidden w-[20%] flex-col md:flex">
 					<label className="pb-1">Filter by age range</label>
 					<div className="flex space-x-2">
 						<input
@@ -77,7 +77,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 				</div>
 
 				{/* %AKG Range Filter */}
-				<div className="flex w-[20%] flex-col">
+				<div className="hidden w-[20%] flex-col md:flex">
 					<label className="pb-1">Filter by %AKG range</label>
 					<div className="flex space-x-2">
 						<input
@@ -111,31 +111,34 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 			>
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Tanggal</th>
-						<th>Waktu</th>
+						<th className="hidden w-[5%] md:flex">ID</th>
+						<th className="hidden md:flex">Tanggal</th>
+						<th className="hidden w-[7%] md:flex">Waktu</th>
 						<th>Nama</th>
-						<th>Umur</th>
-						<th>Menu</th>
+						<th className="hidden w-[10%] md:flex">Umur</th>
+						<th className="w-[20%]">Menu</th>
 						<th>%AKG Terpenuhi</th>
 					</tr>
 				</thead>
 				<tbody>
 					{data.length == 0 && (
 						<tr>
-							<td colSpan={7} className="text-center">
-								No data available
+							<td
+								colSpan={7}
+								className="text-center"
+							>
+								Loading...
 							</td>
 						</tr>
 					)}
 
 					{filteredData.map((item, index) => (
 						<tr key={index}>
-							<td>{index}</td>
-							<td>{item?.tanggal ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(item.tanggal)) : 'segitu'}</td>
-							<td>{item?.waktu ? new Date(item.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '45:00'}</td>
+							<td className="hidden md:flex">{index}</td>
+							<td className="hidden md:flex">{item?.tanggal ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(item.tanggal)) : 'segitu'}</td>
+							<td className="hidden md:flex">{item?.waktu ? new Date(item.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '45:00'}</td>
 							<td>{item.nama}</td>
-							<td>{item.umur}</td>
+							<td className="hidden md:flex">{item.umur}</td>
 							<td>{item?.menu || 'makanan'}</td>
 							<td>{item.akg}</td>
 						</tr>

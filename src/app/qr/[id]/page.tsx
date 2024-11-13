@@ -26,7 +26,7 @@ export default function PrevalenceMap(): JSX.Element {
 				timestamp: new Date().toISOString(),
 			});
 
-			alert('Id ' + id + ' Berhasil Di Scan');
+			alert('Id ' + id + ' Berhasil dipindai!');
 			window.location.href = '/qr';
 		} catch (error) {
 			console.error('Error saving to database:', error);

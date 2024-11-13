@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import Image from 'next/image';
-import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging, IconSparkles, IconSwitchHorizontal } from '@tabler/icons-react';
+import { IconScan, IconPlus, IconMap, IconLifebuoy, IconSettingsFilled, IconBellRinging, IconSparkles, IconSwitchHorizontal, IconQrcode } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useProfileState } from '@/stores/globalState';
@@ -15,7 +15,7 @@ export default function Sidebar({ location }: SidebarProps) {
 	const { profileIndex, setProfileIndex } = useProfileState();
 
 	return (
-		<div className="fixed z-50 flex h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow">
+		<div className="fixed z-50 md:flex hidden h-full w-60 flex-col justify-between border border-r border-gray-300 bg-first pt-4 shadow">
 			<div className="flex w-full flex-col space-y-4 px-4">
 				{/* Title bar */}
 				<div className="flex flex-row items-center space-x-3">
@@ -68,6 +68,16 @@ export default function Sidebar({ location }: SidebarProps) {
 							className="text-custgray1 active:text-custgray2"
 						/>
 						<p>Peta Prevalensi</p>
+					</Link>
+					<Link
+						className={`${location == 'qr' ? 'bg-third' : 'hover:bg-second'} flex items-center justify-start space-x-2 rounded-md px-3 py-2`}
+						href={profileIndex == 0 ? '/qr?p1=false' : '/qr?p1=true'}
+					>
+						<IconQrcode
+							size={20}
+							className="text-custgray1 active:text-custgray2"
+						/>
+						<p>Scan QR Code</p>
 					</Link>
 				</div>
 			</div>
