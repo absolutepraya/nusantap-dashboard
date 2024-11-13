@@ -98,53 +98,56 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 				</div>
 			</div>
 
-			<Table
-				borderAxis="xBetween"
-				stickyFooter={false}
-				stickyHeader
-				sx={{
-					border: '2px solid',
-					borderColor: '#e5e7eb',
-					borderRadius: 'md',
-					overflow: 'hidden',
-				}}
-			>
-				<thead>
-					<tr>
-						<th className="hidden w-[5%] md:flex">ID</th>
-						<th className="hidden md:flex">Tanggal</th>
-						<th className="hidden w-[7%] md:flex">Waktu</th>
-						<th>Nama</th>
-						<th className="hidden w-[10%] md:flex">Umur</th>
-						<th className="w-[20%]">Menu</th>
-						<th>%AKG Terpenuhi</th>
-					</tr>
-				</thead>
-				<tbody>
-					{data.length == 0 && (
+			<div className='overflow-x-scroll'>
+				<Table
+					borderAxis="xBetween"
+					stickyFooter={false}
+					stickyHeader
+					sx={{
+						border: '2px solid',
+						borderColor: '#e5e7eb',
+						borderRadius: 'md',
+						// overflow: 'hidden',
+						minWidth: '1000px',
+					}}
+				>
+					<thead>
 						<tr>
-							<td
-								colSpan={7}
-								className="text-center"
-							>
-								Loading...
-							</td>
+							<th className="w-[5%]">ID</th>
+							<th className="">Tanggal</th>
+							<th className="w-[7%]">Waktu</th>
+							<th>Nama</th>
+							<th className="w-[10%]">Umur</th>
+							<th className="w-[20%]">Menu</th>
+							<th>%AKG Terpenuhi</th>
 						</tr>
-					)}
+					</thead>
+					<tbody>
+						{data.length == 0 && (
+							<tr>
+								<td
+									colSpan={7}
+									className="text-center"
+								>
+									Loading...
+								</td>
+							</tr>
+						)}
 
-					{filteredData.map((item, index) => (
-						<tr key={index}>
-							<td className="hidden md:flex">{index}</td>
-							<td className="hidden md:flex">{item?.tanggal ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(item.tanggal)) : 'segitu'}</td>
-							<td className="hidden md:flex">{item?.waktu ? new Date(item.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '45:00'}</td>
-							<td>{item.nama}</td>
-							<td className="hidden md:flex">{item.umur}</td>
-							<td>{item?.menu || 'makanan'}</td>
-							<td>{item.akg}</td>
-						</tr>
-					))}
-				</tbody>
-			</Table>
+						{filteredData.map((item, index) => (
+							<tr key={index}>
+								<td className="">{index}</td>
+								<td className="">{item?.tanggal ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(item.tanggal)) : 'segitu'}</td>
+								<td className="">{item?.waktu ? new Date(item.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '45:00'}</td>
+								<td>{item.nama}</td>
+								<td className="">{item.umur}</td>
+								<td>{item?.menu || 'makanan'}</td>
+								<td>{item.akg}</td>
+							</tr>
+						))}
+					</tbody>
+				</Table>
+			</div>
 		</div>
 	);
 };

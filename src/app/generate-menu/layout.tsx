@@ -5,7 +5,7 @@ type LayoutProps = {
 };
 
 const GenerateMenuLayout: React.FC<LayoutProps> = ({ children }) => {
-	return <Suspense fallback={<div>Loading Generate Menu...</div>}>{children}</Suspense>;
+	return <Suspense fallback={<div className="flex h-screen w-full items-center justify-center">Loading...</div>}>{children}</Suspense>;
 };
 
 export default GenerateMenuLayout;

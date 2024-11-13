@@ -19,7 +19,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`font-inter text-custblack antialiased`}>
-				<Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+				<Suspense fallback={<div className="flex h-screen w-full items-center justify-center">Loading...</div>}>{children}</Suspense>
 			</body>
 		</html>
 	);
