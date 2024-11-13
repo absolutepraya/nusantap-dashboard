@@ -104,7 +104,7 @@ export default function PrevalenceMap(): JSX.Element {
 							size={36}
 						/>
 
-						<div className="absolute left-0.5 top-0.5 z-[50] h-32 w-20 bg-[#f3f4f6]"></div>
+						<div className="absolute left-[1px] top-[1px] z-[50] h-28 w-20 bg-[#f3f4f6]"></div>
 
 						<div
 							id="reader"
