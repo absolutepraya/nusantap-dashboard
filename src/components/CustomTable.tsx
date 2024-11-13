@@ -1,34 +1,26 @@
+import { ProfileData } from '@/app/page';
 import { Table, Tab, TabList, Tabs, TabPanel, tabClasses } from '@mui/joy';
 import { IconSearch } from '@tabler/icons-react';
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 
-interface DataItem {
-	id: number;
-	nama: string;
-	tanggal: string;
-	waktu: string;
-	umur: number;
-	menu: string;
-	akg: number;
-}
-
 interface CustomTableProps {
-	data: DataItem[];
+	data: ProfileData[];
 }
 
-export default function CustomTable({ data }: CustomTableProps) {
+const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [dateFilter, setDateFilter] = useState('');
 	const [ageRange, setAgeRange] = useState<[number, number]>([0, 100]);
 	const [akgRange, setAkgRange] = useState<[number, number]>([0, 100]);
 
 	const filteredData = data.filter((item) => {
-		const matchesSearch = item.nama.toLowerCase().includes(searchTerm.toLowerCase()) || item.menu.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesDate = dateFilter ? item.tanggal === dateFilter : true;
+		const matchesName = item.nama.toLowerCase().includes(searchTerm.toLowerCase());
+		const matchesMenu = item.menu.toLowerCase().includes(searchTerm.toLowerCase());
+		const matchesDate = item.tanggal === dateFilter;
 		const matchesAge = item.umur >= ageRange[0] && item.umur <= ageRange[1];
 		const matchesAkg = item.akg >= akgRange[0] && item.akg <= akgRange[1];
-		return matchesSearch && matchesDate && matchesAge && matchesAkg;
+		return matchesAge && matchesAkg;
 	});
 
 	return (
@@ -129,19 +121,21 @@ export default function CustomTable({ data }: CustomTableProps) {
 					</tr>
 				</thead>
 				<tbody>
-					{filteredData.map((item) => (
-						<tr key={item.id}>
-							<td>{item.id}</td>
-							<td>{item.tanggal}</td>
-							<td>{item.waktu}</td>
+					{filteredData.map((item, index) => (
+						<tr key={index}>
+							<td>{index}</td>
+							<td>{item?.tanggal ? new Intl.DateTimeFormat('id-ID', { dateStyle: 'long' }).format(new Date(item.tanggal)) : 'segitu'}</td>
+							<td>{item?.waktu ? new Date(item.waktu).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) : '45:00'}</td>
 							<td>{item.nama}</td>
 							<td>{item.umur}</td>
-							<td>{item.menu}</td>
-							<td>{item.akg}%</td>
+							<td>{item?.menu || 'makanan'}</td>
+							<td>{item.akg}</td>
 						</tr>
 					))}
 				</tbody>
 			</Table>
 		</div>
 	);
-}
+};
+
+export default CustomTable;

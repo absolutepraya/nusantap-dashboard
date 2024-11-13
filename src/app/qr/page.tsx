@@ -8,8 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, QrCode, X } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Card, CardContent } from '@/components/ui/card';
+import { useParams } from 'next/navigation';
 
 export default function PrevalenceMap(): JSX.Element {
+	const id = useParams().id;
 	const [scanResult, setScanResult] = useState<string | null>(null);
 	const [showConfirmation, setShowConfirmation] = useState(false);
 	const [showSuccess, setShowSuccess] = useState(false);
@@ -17,6 +19,8 @@ export default function PrevalenceMap(): JSX.Element {
 	const [popUpShown, setPopUpShown] = useState(false);
 
 	useEffect(() => {
+		console.log('ID: ', id);
+
 		const scanner = new Html5QrcodeScanner(
 			'reader',
 			{
