@@ -2,7 +2,7 @@
 	"rewrites": [
 		{ "source": "/api/(.*)", "destination": "/api/proxy.js" },
 		{ "source": "/prevalence-map/jabar", "destination": "/prevalence-jabar.html" },
-		{ "srouce": "/prevalence-map/ntt", "destination": "/prevalence-ntt.html" },
+		{ "source": "/prevalence-map/ntt", "destination": "/prevalence-ntt.html" },
 		{ "source": "/(.*)", "destination": "/" }
 	]
 }
