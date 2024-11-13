@@ -10,7 +10,6 @@ import { Navigation } from 'swiper/modules';
 import OpenAI from 'openai';
 import { useProfileState } from '@/stores/globalState';
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
 
 const dummyData = [
 	{
@@ -55,122 +54,120 @@ export default function CreateMenu() {
 	}, [isSetProfile1, setProfileIndex]);
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<div className="max-w-screen flex w-screen flex-row bg-white">
-				<Sidebar location="generate-menu" />
+		<div className="max-w-screen flex w-screen flex-row bg-white">
+			<Sidebar location="generate-menu" />
 
-				{/* Main content */}
-				<div className="ml-60 flex w-full flex-col space-y-6 px-10 py-8">
-					<div className="flex w-full flex-row items-center justify-between">
-						<p className="text-lg font-semibold text-custgray1">
-							Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
-						</p>
-					</div>
+			{/* Main content */}
+			<div className="ml-60 flex w-full flex-col space-y-6 px-10 py-8">
+				<div className="flex w-full flex-row items-center justify-between">
+					<p className="text-lg font-semibold text-custgray1">
+						Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
+					</p>
+				</div>
 
-					<div className="flex w-full flex-row items-center justify-between">
-						<p className="text-3xl font-bold">Generate Menu</p>
-						{/* Tombol generate semua menu */}
-						<button className="group relative flex w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-3 py-2 text-white">
-							<IconSparkles
-								size={24}
-								className=""
-							/>
-							<p className="text ml-2 pr-1 font-semibold">Generate Semua Menu</p>
-							{/* Emboss Effect */}
-							<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
-							<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
-						</button>
-					</div>
+				<div className="flex w-full flex-row items-center justify-between">
+					<p className="text-3xl font-bold">Generate Menu</p>
+					{/* Tombol generate semua menu */}
+					<button className="group relative flex w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-3 py-2 text-white">
+						<IconSparkles
+							size={24}
+							className=""
+						/>
+						<p className="text ml-2 pr-1 font-semibold">Generate Semua Menu</p>
+						{/* Emboss Effect */}
+						<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
+						<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
+					</button>
+				</div>
 
-					<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
-						<p>Pilihan Menu dalam Satu Minggu</p>
-						<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
-					</div>
+				<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
+					<p>Pilihan Menu dalam Satu Minggu</p>
+					<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
+				</div>
 
-					<div className="relative flex w-full justify-center rounded-xl py-8">
-						<Swiper
-							modules={[Navigation]}
-							slidesPerView={3}
-							className="relative w-[57rem]"
-							spaceBetween={20}
-							// centeredSlides={true}
-							// centeredSlidesBounds={true}
-							navigation={{
-								nextEl: '.swiper-next',
-								prevEl: '.swiper-prev',
-							}}
-						>
-							{dummyData.map((data, index) => (
-								<SwiperSlide key={index}>
-									<div className="flex flex-col space-y-4 rounded-lg bg-second px-4 py-4">
-										<div className="flex flex-row items-end justify-between">
-											<p className="text-2xl font-bold">{data.day}</p>
-											<p className="mb-1 text-xs text-gray-900">18 November 2024</p>
-										</div>
-										<div className="flex flex-col space-y-2">
-											{data.menu.map((menu, index) => (
-												<div
-													key={index}
-													className="flex flex-col items-center space-y-1"
-												>
-													<div className="flex h-36 w-full items-center justify-center overflow-hidden rounded-md">
-														<img
-															src={data.gambar[index]}
-															alt="menu"
-															className="h-full w-full object-cover"
-														/>
-													</div>
-													<p className="text-sm font-semibold">{menu}</p>
-												</div>
-											))}
-										</div>
-										<div className="flex justify-end pt-4">
-											<button className="group relative flex w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-2 py-1 text-white">
-												<IconSparkles
-													size={20}
-													className=""
-												/>
-												<p className="ml-1 pr-1 text-sm font-semibold">Re-generate</p>
-												{/* Emboss Effect */}
-												<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
-												<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
-											</button>
-										</div>
+				<div className="relative flex w-full justify-center rounded-xl py-8">
+					<Swiper
+						modules={[Navigation]}
+						slidesPerView={3}
+						className="relative w-[57rem]"
+						spaceBetween={20}
+						// centeredSlides={true}
+						// centeredSlidesBounds={true}
+						navigation={{
+							nextEl: '.swiper-next',
+							prevEl: '.swiper-prev',
+						}}
+					>
+						{dummyData.map((data, index) => (
+							<SwiperSlide key={index}>
+								<div className="flex flex-col space-y-4 rounded-lg bg-second px-4 py-4">
+									<div className="flex flex-row items-end justify-between">
+										<p className="text-2xl font-bold">{data.day}</p>
+										<p className="mb-1 text-xs text-gray-900">18 November 2024</p>
 									</div>
-								</SwiperSlide>
-							))}
-						</Swiper>
-						<div className="swiper-prev bg-red absolute bottom-1/2 left-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
-							<IconChevronLeft
-								size={24}
-								strokeWidth={3}
-							/>
-						</div>
-						<div className="swiper-next bg-red absolute bottom-1/2 right-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
-							<IconChevronRight
-								size={24}
-								strokeWidth={3}
-							/>
-						</div>
-					</div>
-
-					<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
-						<p>Menu Generasi AI</p>
-						<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
-					</div>
-
-					<div className="grid w-full grid-cols-3 gap-4">
-						{dummyMenus.map((menu, index) => (
-							<div
-								key={index}
-								className="flex h-12 items-center justify-center rounded-md bg-second shadow transition-transform hover:scale-105 hover:bg-third"
-							>
-								<p className="text-sm font-semibold">{menu}</p>
-							</div>
+									<div className="flex flex-col space-y-2">
+										{data.menu.map((menu, index) => (
+											<div
+												key={index}
+												className="flex flex-col items-center space-y-1"
+											>
+												<div className="flex h-36 w-full items-center justify-center overflow-hidden rounded-md">
+													<img
+														src={data.gambar[index]}
+														alt="menu"
+														className="h-full w-full object-cover"
+													/>
+												</div>
+												<p className="text-sm font-semibold">{menu}</p>
+											</div>
+										))}
+									</div>
+									<div className="flex justify-end pt-4">
+										<button className="group relative flex w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-2 py-1 text-white">
+											<IconSparkles
+												size={20}
+												className=""
+											/>
+											<p className="ml-1 pr-1 text-sm font-semibold">Re-generate</p>
+											{/* Emboss Effect */}
+											<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
+											<div className="pointer-events-none absolute bottom-0 right-0 h-full w-full border-b border-r border-black opacity-30"></div>
+										</button>
+									</div>
+								</div>
+							</SwiperSlide>
 						))}
+					</Swiper>
+					<div className="swiper-prev bg-red absolute bottom-1/2 left-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
+						<IconChevronLeft
+							size={24}
+							strokeWidth={3}
+						/>
+					</div>
+					<div className="swiper-next bg-red absolute bottom-1/2 right-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
+						<IconChevronRight
+							size={24}
+							strokeWidth={3}
+						/>
 					</div>
 				</div>
+
+				<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
+					<p>Menu Generasi AI</p>
+					<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
+				</div>
+
+				<div className="grid w-full grid-cols-3 gap-4">
+					{dummyMenus.map((menu, index) => (
+						<div
+							key={index}
+							className="flex h-12 items-center justify-center rounded-md bg-second shadow transition-transform hover:scale-105 hover:bg-third"
+						>
+							<p className="text-sm font-semibold">{menu}</p>
+						</div>
+					))}
+				</div>
 			</div>
-		</Suspense>
+		</div>
 	);
 }
