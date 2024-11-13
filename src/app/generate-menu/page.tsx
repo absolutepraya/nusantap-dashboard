@@ -13,6 +13,9 @@ import { motion } from 'framer-motion';
 import { hargaBahanPokok, hargaBahanPokokJabar } from '@/data/hargaBahanPokok';
 import BahanPokokModal from './BahanPokokModal';
 import MenuDetailModal from './MenuDetailModal';
+import OpenAI from 'openai';
+import { useProfileState } from '@/stores/globalState';
+import { useSearchParams } from 'next/navigation';
 
 // const client = new OpenAI({
 // 	apiKey: process.env['OPENAI_API_KEY'],
@@ -24,6 +27,16 @@ interface MakananDataItem {
 }
 
 export default function CreateMenu() {
+	const searchParams = useSearchParams();
+	const isSetProfile1 = searchParams.get('p1') === 'true';
+
+	const { profileIndex, setProfileIndex } = useProfileState();
+
+	useEffect(() => {
+		if (isSetProfile1) {
+			setProfileIndex(1);
+		}
+	}, [isSetProfile1, setProfileIndex]);
 	const [selectedMenu, setSelectedMenu] = useState<MenuItem | null>(null);
 	const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
 	const [menuItems, setMenuItems] = useState<String[]>([]);
@@ -213,7 +226,7 @@ export default function CreateMenu() {
 				<div className="te flex w-full flex-row items-center justify-between">
 					{' '}
 					<p className="text-lg font-semibold text-custgray1">
-						Selamat datang, Admin <span className="font-bold text-custblue">Jawa Barat</span> 👋🏻
+						Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
 					</p>
 				</div>
 
@@ -251,12 +264,29 @@ export default function CreateMenu() {
 							<button
 								className="group relative flex h-12 w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-3 py-1 text-white"
 								onClick={() => getMenuRecommendation('semua hari dalam satu minggu')}
-								disabled={isLoading['all']}
+								disabled={isLoading['semua hari dalam satu minggu']}
 							>
-								<IconSparkles
-									size={24}
-									className=""
-								/>
+								{isLoading['semua hari dalam satu minggu'] ? (
+									<motion.div
+										className="flex items-center justify-center"
+										initial={{ scale: 0 }}
+										animate={{ scale: 1 }}
+										transition={{ duration: 0.5 }}
+										key={'semua hari dalam satu minggu'} // Add a unique key for the loading animation
+									>
+										<IconSparkles
+											size={20}
+											className="animate-spin"
+										/>
+									</motion.div>
+								) : (
+									<>
+										<IconSparkles
+											size={20}
+											className=""
+										/>
+									</>
+								)}
 								<p className="text ml-2 pr-1 font-semibold">Generate Semua Menu</p>
 								{/* Emboss Effect */}
 								<div className="pointer-events-none absolute left-0 top-0 h-full w-full border-l border-t border-white opacity-30"></div>
@@ -270,7 +300,7 @@ export default function CreateMenu() {
 					</div>
 				</div>
 
-				<div className="relative flex w-full justify-center rounded-xl bg-third py-8 shadow-lg">
+				<div className="relative flex w-full justify-center rounded-xl py-8">
 					<Swiper
 						modules={[Navigation]}
 						slidesPerView={3}
@@ -376,7 +406,7 @@ export default function CreateMenu() {
 				</div>
 
 				<div className="flex w-full flex-row items-center space-x-2 text-sm text-gray-400">
-					<p>50 Menu Generasi AI</p>
+					<p>Menu Generasi AI</p>
 					<div className="mt-1 h-[1px] w-auto flex-grow bg-gray-400" />
 				</div>
 

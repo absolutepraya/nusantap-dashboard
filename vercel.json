@@ -1,7 +1,8 @@
 {
 	"rewrites": [
 		{ "source": "/api/(.*)", "destination": "/api/proxy.js" },
-		{ "source": "/prevalence-map", "destination": "/prevalence.html" },
+		{ "source": "/prevalence-map/jabar", "destination": "/prevalence-jabar.html" },
+		{ "source": "/prevalence-map/ntt", "destination": "/prevalence-ntt.html" },
 		{ "source": "/(.*)", "destination": "/" }
 	]
 }

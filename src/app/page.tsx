@@ -11,6 +11,8 @@ import LineChart from '@/components/LineChart';
 import CustomTable from '@/components/CustomTable';
 import { db } from './utils/firebase/firebase';
 import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { useProfileState } from '@/stores/globalState';
+import { useSearchParams } from 'next/navigation';
 
 export interface TempatTinggal {
 	provinsi: string;
@@ -33,9 +35,27 @@ export interface ProfileData {
 
 export default function Home() {
 	const [dummyTableData, setDummyTableData] = useState<ProfileData[]>([]);
+	const { profileIndex, setProfileIndex } = useProfileState();
+
+	// Search params
+	const searchParams = useSearchParams();
+	const isSetProfile1 = searchParams.get('p1') === 'true';
+
+	useEffect(() => {
+		if (isSetProfile1) {
+			setProfileIndex(1);
+		}
+	}, [isSetProfile1, setProfileIndex]);
 
 	useEffect(() => {
 		const fetchData = async () => {
+			// If the profileIndex is 1 (NTT), then empty the table data
+			if (profileIndex == 1) {
+				// Empty the table data
+				setDummyTableData([]);
+				return;
+			}
+			
 			const q = query(collection(db, 'profiles'), where('scanned', '==', true));
 
 			const qSnapShot = await getDocs(q);
@@ -53,17 +73,17 @@ export default function Home() {
 		};
 
 		fetchData();
-	}, []);
+	}, [profileIndex]);
 
 	return (
 		<div className="flex h-full w-full flex-row bg-white">
 			<Sidebar location="/" />
 
 			{/* Main content */}
-			<div className="ml-60 flex h-full w-full flex-col space-y-6 px-10 py-8">
+			<div className="md:ml-60 flex h-full w-full flex-col space-y-6 px-10 py-8">
 				<div className="flex w-full flex-row items-center justify-between">
 					<p className="text-lg font-semibold text-custgray1">
-						Selamat datang, Admin <span className="font-bold text-custblue">Jawa Barat</span> 👋🏻
+						Selamat datang, Admin <span className="font-bold text-custblue">{profileIndex == 0 ? 'Jawa Barat' : 'Nusa Tenggara Timur'}</span> 👋🏻
 					</p>
 					<button className="flex flex-row items-center rounded-md bg-custblue px-3 py-[6px] pr-3 text-sm font-semibold text-white hover:bg-[#3156a3] active:bg-[#1f3e7d]">
 						<IconDownload
@@ -133,7 +153,7 @@ export default function Home() {
 							pt: 3,
 						}}
 					>
-						<LineChart lineChartData={lineChartData} />
+						<LineChart lineChartData={lineChartData} height='500px' />
 					</TabPanel>
 
 					<TabPanel

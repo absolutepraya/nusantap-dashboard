@@ -5,10 +5,6 @@ export interface MakanJabarMini {
 
 export const makananJabarMini: MakanJabarMini[] = [
 	{
-		id: 0,
-		nutrisi: 'Karbohidrat 10 gr, Protein 1 gr, Kalsium',
-	},
-	{
 		id: 1,
 		nutrisi: 'Protein 10 gr, Vitamin C 1 gr',
 	},

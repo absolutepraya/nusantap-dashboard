@@ -37,14 +37,12 @@
 						class="w-full rounded-md border bg-white px-2 py-1 shadow"
 						placeholder="Cari menu"
 					/>
-					<!-- IconSearch -->
-					<!-- You can insert your search icon SVG here -->
 				</div>
 
 				<!-- Menu Bar -->
 				<div class="flex flex-col space-y-2 text-sm font-semibold">
 					<a
-						href="/"
+						href="/?p1=true"
 						class="flex items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
 					>
 						<svg
@@ -73,7 +71,7 @@
 						<span>Hasil Scan</span>
 					</a>
 					<a
-						href="/generate-menu"
+						href="/generate-menu?p1=true"
 						class="flex items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
 					>
 						<svg
@@ -124,6 +122,42 @@
 						</svg>
 						<span>Peta Prevalensi</span>
 					</a>
+					<a
+						href="/qr?p1=true"
+						class="flex items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="#636b74"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon icon-tabler icons-tabler-outline icon-tabler-qrcode"
+						>
+							<path
+								stroke="none"
+								d="M0 0h24v24H0z"
+								fill="none"
+							/>
+							<path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M7 17l0 .01" />
+							<path d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M7 7l0 .01" />
+							<path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+							<path d="M17 7l0 .01" />
+							<path d="M14 14l3 0" />
+							<path d="M20 14l0 .01" />
+							<path d="M14 14l0 3" />
+							<path d="M14 20l3 0" />
+							<path d="M17 17l3 0" />
+							<path d="M20 17l0 3" />
+						</svg>
+						<span>Scan QR Code</span>
+					</a>
 				</div>
 			</div>
 
@@ -131,7 +165,10 @@
 			<div class="flex flex-col text-sm">
 				<!-- Additional Menu Items -->
 				<div class="mb-4 flex flex-col space-y-2 px-4 font-semibold">
-					<button class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]">
+					<button
+						class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
+						disabled
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="20"
@@ -156,7 +193,10 @@
 						</svg>
 						<span>Notifikasi</span>
 					</button>
-					<button class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]">
+					<button
+						class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
+						disabled
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="20"
@@ -183,7 +223,10 @@
 						</svg>
 						<span>Bantuan</span>
 					</button>
-					<button class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]">
+					<button
+						class="flex cursor-not-allowed items-center space-x-2 rounded-md px-3 py-2 hover:bg-[#f0f4f8]"
+						disabled
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="20"
@@ -209,11 +252,35 @@
 				</div>
 
 				<!-- Profile Section -->
-				<div class="flex cursor-pointer select-none justify-center py-4 hover:bg-[#f0f4f8] active:bg-[#dde7ee]">
+				<div class="profilebox flex cursor-pointer select-none py-4 pl-4 hover:bg-[#f0f4f8] active:bg-[#dde7ee]">
 					<div class="flex items-center space-x-2">
-						<div class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-500">
+						<div class="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-500">
+							<div class="absolute -left-1 -top-1 flex h-4 w-4 items-center justify-center rounded bg-[#0b6bcb] text-white">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="12"
+									height="12"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="icon icon-tabler icons-tabler-outline icon-tabler-switch-horizontal"
+								>
+									<path
+										stroke="none"
+										d="M0 0h24v24H0z"
+										fill="none"
+									/>
+									<path d="M16 3l4 4l-4 4" />
+									<path d="M10 7l10 0" />
+									<path d="M8 13l-4 4l4 4" />
+									<path d="M4 17l9 0" />
+								</svg>
+							</div>
 							<img
-								src="/images/pfp.jpg"
+								src="/images/pfp2.jpg"
 								alt="PFP"
 								width="36"
 								height="36"
@@ -221,8 +288,8 @@
 							/>
 						</div>
 						<div class="flex flex-col">
-							<p class="font-semibold">Daffa A. (Jawa Barat)</p>
-							<p class="text-gray-600">daffa.jabar@nusantap.id</p>
+							<p class="font-semibold">Anwar S. (NTT)</p>
+							<p class="text-gray-600">anwar.ntt@nusantap.id</p>
 						</div>
 					</div>
 				</div>
@@ -232,41 +299,17 @@
 		<!-- Main Content -->
 		<div class="ml-60 flex flex-1 flex-col space-y-6 overflow-auto px-10 py-8">
 			<div class="flex w-full flex-row items-center justify-between">
-				<p class="text-lg font-semibold text-[#636b74]">Selamat datang, Admin <span class="font-bold text-[#0b6bcb]">Jawa Barat</span> 👋🏻</p>
-				<button class="flex flex-row items-center rounded-md bg-[#0b6bcb] px-3 py-[6px] pr-3 text-sm font-semibold text-white hover:bg-[#3156a3] active:bg-[#1f3e7d]">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="20"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="#ffffff"
-						stroke-width="2.5"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="icon icon-tabler icons-tabler-outline icon-tabler-download mr-2"
-					>
-						<path
-							stroke="none"
-							d="M0 0h24v24H0z"
-							fill="none"
-						/>
-						<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-						<path d="M7 11l5 5l5 -5" />
-						<path d="M12 4l0 12" />
-					</svg>
-					<p>Download PDF</p>
-				</button>
+				<p class="text-lg font-semibold text-[#636b74]">Selamat datang, Admin <span class="font-bold text-[#0b6bcb]">Nusa Tenggara Timur</span> 👋🏻</p>
 			</div>
 
 			<div class="flex w-full flex-row items-center justify-between">
-				<p class="text-3xl font-bold">Peta Prevalensi Jawa Barat</p>
+				<p class="text-3xl font-bold">Peta Prevalensi Stunting Nusa Tenggara Timur</p>
 			</div>
 
 			<div
 				class="tableauPlaceholder"
-				id="viz1731384725437"
-				style="position: relative; height: 100%; width: 100%"
+				id="viz1731513351474"
+				style="position: relative"
 			>
 				<object
 					class="tableauViz"
@@ -282,7 +325,7 @@
 					/>
 					<param
 						name="path"
-						value="shared/GZH392NW7"
+						value="shared&#47;R9QQ8T2ZY"
 					/>
 					<param
 						name="toolbar"
@@ -290,7 +333,7 @@
 					/>
 					<param
 						name="static_image"
-						value="https://public.tableau.com/static/images/GZ/GZH392NW7/1.png"
+						value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;R9&#47;R9QQ8T2ZY&#47;1.png"
 					/>
 					<param
 						name="animate_transition"
@@ -318,17 +361,29 @@
 					/>
 				</object>
 			</div>
-		</div>
+			<script type="text/javascript">
+				var divElement = document.getElementById('viz1731513351474');
+				var vizElement = divElement.getElementsByTagName('object')[0];
+				vizElement.style.width = '100%';
+				vizElement.style.height = divElement.offsetWidth * 0.75 + 'px';
+				var scriptElement = document.createElement('script');
+				scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+				vizElement.parentNode.insertBefore(scriptElement, vizElement);
 
-		<!-- Tableau JavaScript API -->
-		<script type="text/javascript">
-			var divElement = document.getElementById('viz1731384725437');
-			var vizElement = divElement.getElementsByTagName('object')[0];
-			vizElement.style.width = '100%';
-			vizElement.style.height = divElement.offsetWidth * 0.75 + 'px';
-			var scriptElement = document.createElement('script');
-			scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-			vizElement.parentNode.insertBefore(scriptElement, vizElement);
-		</script>
+				// Create an absolute alert div on top of profilebox if the profilebox is clicked
+				const profilebox = document.querySelector('.profilebox');
+				profilebox.addEventListener('click', () => {
+					const alertDiv = document.createElement('div');
+					alertDiv.classList.add('absolute', 'bottom-[5.5rem]', 'left-4', 'flex', 'items-center', 'justify-center', 'bg-red-500', 'text-white', 'font-semibold', 'py-2', 'px-2', 'rounded-lg', 'z-[200]', 'mr-4');
+					alertDiv.innerHTML = '<p>Harap mengganti profil di page menu lain! (misal: di "/" atau "/generate-menu")</p>';
+					profilebox.appendChild(alertDiv);
+
+					// Remove the alertDiv after 2 seconds
+					setTimeout(() => {
+						alertDiv.remove();
+					}, 2000);
+				});
+			</script>
+		</div>
 	</body>
 </html>

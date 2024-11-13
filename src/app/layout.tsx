@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import '@fontsource/inter';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
 	title: 'NuSantap - Dashboard',
@@ -18,7 +19,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`font-inter text-custblack antialiased`}>
-				{children}
+				<Suspense fallback={<div className="flex h-screen w-full items-center justify-center">Loading...</div>}>{children}</Suspense>
 			</body>
 		</html>
 	);

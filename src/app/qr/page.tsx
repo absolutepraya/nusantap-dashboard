@@ -9,6 +9,8 @@ import { Check, QrCode, X } from 'lucide-react';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
 import { Card, CardContent } from '@/components/ui/card';
 import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import { IconScan } from '@tabler/icons-react';
 
 export default function PrevalenceMap(): JSX.Element {
 	const id = useParams().id;
@@ -16,9 +18,9 @@ export default function PrevalenceMap(): JSX.Element {
 	const [showConfirmation, setShowConfirmation] = useState(false);
 	const [showSuccess, setShowSuccess] = useState(false);
 	const [currentId, setCurrentId] = useState<string>('');
-	const [popUpShown, setPopUpShown] = useState(false);
-	const [canScan, setCanScan] = useState(true);
-	const [scannedId, setScannedId] = useState<string | null>(null);
+	const [isProcessingScan, setIsProcessingScan] = useState(false); // New state
+	const searchParams = useSearchParams();
+	const isSetProfile1 = searchParams.get('p1') === 'true';
 
 	useEffect(() => {
 		console.log('ID: ', id);
@@ -36,25 +38,34 @@ export default function PrevalenceMap(): JSX.Element {
 			// Handle the error here
 			// console.error('Error scanning QR code:', error);
 		});
+
+		// Cleanup on unmount
+		return () => {
+			scanner.clear();
+		};
 	}, []);
 
 	const handleScan = (result: string) => {
+		if (isProcessingScan) return; // Prevent multiple scans
+		setIsProcessingScan(true); // Start processing
+
 		const resultParsed = result.split('-');
 
-		if (canScan && resultParsed[0] === 'nstp') {
-			if (scanResult === resultParsed[1]) return;
-			if (scannedId !== resultParsed[1]) {
-				setShowConfirmation(true);
-				setCurrentId(resultParsed[1]);
+		if (resultParsed[0] === 'nstp') {
+			if (scanResult === resultParsed[1]) {
+				setIsProcessingScan(false); // Reset if same ID
+				return;
 			}
+			setCurrentId(resultParsed[1]);
+			setShowConfirmation(true);
+		} else {
+			setIsProcessingScan(false); // Reset if QR code format is incorrect
 		}
 	};
 
 	const handleConfirm = async () => {
 		try {
 			// Disable scanning for 10 seconds
-			setCanScan(false);
-			setPopUpShown(true);
 
 			await set(ref(rtdb, `users/${currentId}`), {
 				scanned: true,
@@ -64,20 +75,16 @@ export default function PrevalenceMap(): JSX.Element {
 			setShowConfirmation(false);
 			setScanResult(currentId);
 			setShowSuccess(true);
-			setScannedId(currentId);
 
-			// Re-enable scanning after 10 seconds
+			// Hide success message after 3 seconds and reset processing flag
 			setTimeout(() => {
-				setCanScan(true);
 				setShowSuccess(false);
 				setScanResult(null);
-				setPopUpShown(false);
-			}, 10000);
+				setIsProcessingScan(false); // Allow new scans
+			}, 3000);
 		} catch (error) {
 			console.error('Error saving to database:', error);
-			// Reset scanning cooldown if there's an error
-			setCanScan(true);
-			setPopUpShown(false);
+			setIsProcessingScan(false); // Reset on error
 		}
 	};
 
@@ -86,17 +93,24 @@ export default function PrevalenceMap(): JSX.Element {
 			<Card className="mx-auto mt-8 max-w-md">
 				<CardContent className="p-6">
 					<div className="mb-6 flex items-center justify-between">
-						<h1 className="text-2xl font-bold text-gray-900">QR Scanner</h1>
+						<h1 className="text-2xl font-bold text-gray-900">NuSantap QR Scanner</h1>
 						<QrCode
 							className="text-blue-600"
 							size={24}
 						/>
 					</div>
 
-					<div className="relative overflow-hidden rounded-lg bg-gray-100">
+					<div className="relative bg-gray-100">
+						{/* <IconScan
+							className="absolute right-1/2 top-16 z-[100] translate-x-1/2 bg-[#f3f4f6]"
+							size={36}
+						/>
+
+						<div className="absolute left-[1px] top-[1px] z-[50] h-28 w-20 bg-[#f3f4f6]"></div> */}
+
 						<div
 							id="reader"
-							className="aspect-video w-full"
+							className="relative aspect-video w-full"
 						></div>
 
 						<AnimatePresence>
@@ -121,22 +135,6 @@ export default function PrevalenceMap(): JSX.Element {
 								</motion.div>
 							)}
 						</AnimatePresence>
-
-						<AnimatePresence>
-							{popUpShown && !showSuccess && (
-								<motion.div
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1 }}
-									exit={{ opacity: 0 }}
-									className="absolute inset-0 flex items-center justify-center bg-blue-500/80"
-								>
-									<div className="text-center text-white">
-										<p className="text-lg font-medium">Please wait...</p>
-										<p className="text-sm opacity-90">Scanner will be ready in 10 seconds</p>
-									</div>
-								</motion.div>
-							)}
-						</AnimatePresence>
 					</div>
 
 					{scanResult && (
@@ -153,7 +151,10 @@ export default function PrevalenceMap(): JSX.Element {
 
 			<AlertDialog
 				open={showConfirmation}
-				onOpenChange={setShowConfirmation}
+				onOpenChange={(open) => {
+					if (!open) setIsProcessingScan(false); // Reset if dialog is closed without confirming
+					setShowConfirmation(open);
+				}}
 			>
 				<AlertDialogContent>
 					<AlertDialogHeader>
