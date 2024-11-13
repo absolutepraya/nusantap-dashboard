@@ -15,12 +15,12 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 	const [akgRange, setAkgRange] = useState<[number, number]>([0, 100]);
 
 	const filteredData = data.filter((item) => {
-		const matchesName = item.nama.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesMenu = item.menu.toLowerCase().includes(searchTerm.toLowerCase());
-		const matchesDate = item.tanggal === dateFilter;
-		const matchesAge = item.umur >= ageRange[0] && item.umur <= ageRange[1];
-		const matchesAkg = item.akg >= akgRange[0] && item.akg <= akgRange[1];
-		return matchesAge && matchesAkg;
+		const matchesName = item.nama?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false;
+		const matchesMenu = item.menu?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false;
+		const matchesDate = item.tanggal === dateFilter || dateFilter === '';
+		const matchesAge = (item.umur ?? 0) >= ageRange[0] && (item.umur ?? 0) <= ageRange[1];
+		const matchesAkg = (item.akg ?? 0) >= akgRange[0] && (item.akg ?? 0) <= akgRange[1];
+		return matchesName && matchesMenu && matchesDate && matchesAge && matchesAkg;
 	});
 
 	return (
