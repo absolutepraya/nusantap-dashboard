@@ -12,6 +12,7 @@ import CustomTable from '@/components/CustomTable';
 import { db } from './utils/firebase/firebase';
 import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { useProfileState } from '@/stores/globalState';
+import { useSearchParams } from 'next/navigation';
 
 export interface TempatTinggal {
 	provinsi: string;
@@ -36,8 +37,19 @@ export default function Home() {
 	const [dummyTableData, setDummyTableData] = useState<ProfileData[]>([]);
 	const { profileIndex, setProfileIndex } = useProfileState();
 
+	// Search params
+	const searchParams = useSearchParams();
+	const isSetProfile1 = searchParams.get('p1') === 'true';
+
+	useEffect(() => {
+		if (isSetProfile1) {
+			setProfileIndex(1);
+		}
+	}, [isSetProfile1, setProfileIndex]);
+
 	useEffect(() => {
 		const fetchData = async () => {
+			// If the profileIndex is 1 (NTT), then empty the table data
 			if (profileIndex == 1) {
 				// Empty the table data
 				setDummyTableData([]);

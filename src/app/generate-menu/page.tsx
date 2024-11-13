@@ -9,6 +9,7 @@ import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
 import OpenAI from 'openai';
 import { useProfileState } from '@/stores/globalState';
+import { useSearchParams } from 'next/navigation';
 
 const dummyData = [
 	{
@@ -41,7 +42,16 @@ const dummyData = [
 const dummyMenus = ['Nasi Goreng', 'Satay Ayam', 'Rendang', 'Gado-Gado', 'Soto Ayam', 'Bakso', 'Mie Goreng', 'Nasi Uduk', 'Pecel', 'Ayam Goreng', 'Sambal', 'Babi Guling', 'Sate Padang', 'Lontong Sayur', 'Pempek', 'Nasi Kuning', 'Tahu Goreng', 'Bubur Ayam', 'Martabak Manis', 'Es Cendol', 'Kue Lapis', 'Serabi', 'Gudeg Yogyakarta', 'Ayam Balado', 'Ikan Bakar', 'Soto Betawi', 'Nasi Campur', 'Nasi Liwet', 'Ayam Bakar Taliwang', 'Tumpeng', 'Kerak Telor', 'Sayur Asem', 'Bakmi Jawa', 'Soto Mie', 'Karedok', 'Kue Putu', 'Kue Cubit', 'Bika Ambon', 'Ayam Taliwang', 'Soto Banjar', 'Kue Serabi', 'Babi Kecap', 'Nasi Bebek', 'Sate Lilit', 'Ayam Betutu', 'Nasi Goreng Kampung', 'Nasi Padang', 'Tempeh Goreng', 'Sate Kambing', 'Lumpia Semarang', 'Sop Buntut', 'Bakso Malang'];
 
 export default function CreateMenu() {
+	const searchParams = useSearchParams();
+	const isSetProfile1 = searchParams.get('p1') === 'true';
+
 	const { profileIndex, setProfileIndex } = useProfileState();
+
+	useEffect(() => {
+		if (isSetProfile1) {
+			setProfileIndex(1);
+		}
+	}, [isSetProfile1, setProfileIndex]);
 
 	return (
 		<div className="max-w-screen flex w-screen flex-row bg-white">
