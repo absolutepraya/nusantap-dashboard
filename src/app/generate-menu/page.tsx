@@ -39,9 +39,9 @@ const dummyData = [
 
 const dummyMenus = ['Nasi Goreng', 'Satay Ayam', 'Rendang', 'Gado-Gado', 'Soto Ayam', 'Bakso', 'Mie Goreng', 'Nasi Uduk', 'Pecel', 'Ayam Goreng', 'Sambal', 'Babi Guling', 'Sate Padang', 'Lontong Sayur', 'Pempek', 'Nasi Kuning', 'Tahu Goreng', 'Bubur Ayam', 'Martabak Manis', 'Es Cendol', 'Kue Lapis', 'Serabi', 'Gudeg Yogyakarta', 'Ayam Balado', 'Ikan Bakar', 'Soto Betawi', 'Nasi Campur', 'Nasi Liwet', 'Ayam Bakar Taliwang', 'Tumpeng', 'Kerak Telor', 'Sayur Asem', 'Bakmi Jawa', 'Soto Mie', 'Karedok', 'Kue Putu', 'Kue Cubit', 'Bika Ambon', 'Ayam Taliwang', 'Soto Banjar', 'Kue Serabi', 'Babi Kecap', 'Nasi Bebek', 'Sate Lilit', 'Ayam Betutu', 'Nasi Goreng Kampung', 'Nasi Padang', 'Tempeh Goreng', 'Sate Kambing', 'Lumpia Semarang', 'Sop Buntut', 'Bakso Malang'];
 
-const client = new OpenAI({
-	apiKey: process.env['OPENAI_API_KEY'],
-});
+// const client = new OpenAI({
+// 	apiKey: process.env['OPENAI_API_KEY'],
+// });
 
 export default function CreateMenu() {
 	// async function handleOpenAIRequest() {
