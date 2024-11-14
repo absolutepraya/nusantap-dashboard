@@ -21,6 +21,7 @@
 		"@tabler/icons-react": "^3.21.0",
 		"@yudiel/react-qr-scanner": "^2.0.8",
 		"async-g-i-s": "^1.5.4",
+		"axios": "^1.7.7",
 		"chart.js": "^4.4.6",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
