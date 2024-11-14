@@ -21,7 +21,7 @@ export const makananNTT: MenuItem[] = [
 		nama: 'Jagung Bose dengan Ikan Kuah Asam dan Pepaya',
 		harga_total: '16000',
 		nutrisi: 'Energi: 350 kal, Karbohidrat: 55 gr, Protein: 20 gr, Lemak: 8 gr, Vitamin C: 40 mg',
-		image_url: 'https://th.bing.com/th/id/OIP.abc123_example_img.jpg',
+		image_url: 'https://th.bing.com/th/id/OIP.Wj8bI7cEseuku5mNehDiTwHaEK?w=273&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Jagung Putih',
@@ -49,7 +49,7 @@ export const makananNTT: MenuItem[] = [
 		nama: 'Nasi Jagung dengan Ayam Rica-Rica dan Timun',
 		harga_total: '15000',
 		nutrisi: 'Energi: 400 kal, Karbohidrat: 60 gr, Protein: 18 gr, Lemak: 12 gr, Vitamin A: 25 mg',
-		image_url: 'https://th.bing.com/th/id/OIP.def456_example_img.jpg',
+		image_url: 'https://th.bing.com/th/id/OIP.Mcx-Rl1eHn0EuRrH9MK4ogHaHa?w=186&h=186&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Jagung Giling',
@@ -77,7 +77,7 @@ export const makananNTT: MenuItem[] = [
 		nama: 'Jagung Katemak dengan Sate Kambing dan Jeruk Bali',
 		harga_total: '18000',
 		nutrisi: 'Energi: 450 kal, Karbohidrat: 65 gr, Protein: 25 gr, Lemak: 15 gr, Zat Besi: 20 mg',
-		image_url: 'https://th.bing.com/th/id/OIP.ghi789_example_img.jpg',
+		image_url: 'https://th.bing.com/th/id/OIP.xUeAPxR46I5ehBOczn38_gHaFP?w=252&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Jagung Katemak',
@@ -105,7 +105,7 @@ export const makananNTT: MenuItem[] = [
 		nama: 'Sup Jagung dengan Ikan Bakar dan Mangga',
 		harga_total: '16000',
 		nutrisi: 'Energi: 370 kal, Karbohidrat: 50 gr, Protein: 22 gr, Lemak: 10 gr, Omega-3: 1.5 mg',
-		image_url: 'https://th.bing.com/th/id/OIP.jkl012_example_img.jpg',
+		image_url: 'https://th.bing.com/th/id/OIP.o6ikMvx319jw98nIdTQIpwHaJ5?w=123&h=180&c=7&r=0&o=5&dpr=1.4&pid=1.7',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Jagung Manis',
