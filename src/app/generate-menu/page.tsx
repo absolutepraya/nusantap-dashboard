@@ -8,7 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules';
 import { makananJabar, MenuItem } from '@/data/makanan-jabar';
-import { makananJabarMini } from '@/data/makanan-jabar-mini';
+import { makananJabarMini, MakanJabarMini } from '@/data/makanan-jabar-mini';
+import { makananNTT } from '@/data/makanan-ntt';
 import { motion } from 'framer-motion';
 import { hargaBahanPokok, hargaBahanPokokJabar } from '@/data/hargaBahanPokok';
 import BahanPokokModal from './BahanPokokModal';
@@ -16,10 +17,84 @@ import MenuDetailModal from './MenuDetailModal';
 import OpenAI from 'openai';
 import { useProfileState } from '@/stores/globalState';
 import { useSearchParams } from 'next/navigation';
+import { makananNTTMini } from '@/data/makanan-ntt-mini';
 
 // const client = new OpenAI({
 // 	apiKey: process.env['OPENAI_API_KEY'],
 // });
+
+const initialData = [
+	{
+		hari: 'Senin',
+		menu: [
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+		],
+	},
+	{
+		hari: 'Selasa',
+		menu: [
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+		],
+	},
+	{
+		hari: 'Rabu',
+		menu: [
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+		],
+	},
+	{
+		hari: 'Kamis',
+		menu: [
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+		],
+	},
+	{
+		hari: 'Jumat',
+		menu: [
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+			{
+				id: 0,
+			},
+		],
+	},
+];
 
 interface MakananDataItem {
 	hari: string;
@@ -32,94 +107,39 @@ export default function CreateMenu() {
 
 	const { profileIndex, setProfileIndex } = useProfileState();
 
+	const [selectedMenu, setSelectedMenu] = useState<MenuItem | null>(null);
+	const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+	const [menuItems, setMenuItems] = useState<String[]>([]);
+	const [weeklyMenu, setWeeklyMenu] = useState(initialData);
+	const [weeklyMenuData, setWeeklyMenuData] = useState<MakananDataItem[]>([]);
+	const [isLoading, setIsLoading] = useState<Record<string, boolean>>({});
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [currentMakananMini, setCurrentMakananMini] = useState<MakanJabarMini[]>([]);
+
+	useEffect(() => {
+		if (profileIndex === 0) {
+			setCurrentMakananMini(makananJabarMini);
+		} else {
+			setCurrentMakananMini(makananNTTMini);
+		}
+	}, []);
+
 	useEffect(() => {
 		if (isSetProfile1) {
 			setProfileIndex(1);
 		}
-	}, [isSetProfile1, setProfileIndex]);
-	const [selectedMenu, setSelectedMenu] = useState<MenuItem | null>(null);
-	const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
-	const [menuItems, setMenuItems] = useState<String[]>([]);
-	const [weeklyMenu, setWeeklyMenu] = useState([
-		{
-			hari: 'Senin',
-			menu: [
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-			],
-		},
-		{
-			hari: 'Selasa',
-			menu: [
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-			],
-		},
-		{
-			hari: 'Rabu',
-			menu: [
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-			],
-		},
-		{
-			hari: 'Kamis',
-			menu: [
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-			],
-		},
-		{
-			hari: 'Jumat',
-			menu: [
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-				{
-					id: 0,
-				},
-			],
-		},
-	]);
-	const [weeklyMenuData, setWeeklyMenuData] = useState<MakananDataItem[]>([]);
-	const [isLoading, setIsLoading] = useState<Record<string, boolean>>({});
-	const [isModalOpen, setIsModalOpen] = useState(false);
+		setWeeklyMenu(initialData);
+	}, [isSetProfile1, setProfileIndex, profileIndex]);
 
 	useEffect(() => {
 		const makananJabarNama = makananJabar.map((makanan) => makanan.nama);
-		setMenuItems(makananJabarNama);
-	}, []);
+		const makananNTTNama = makananNTT.map((makanan) => makanan.nama);
+		if (profileIndex === 0) {
+			setMenuItems(makananJabarNama);
+		} else {
+			setMenuItems(makananNTTNama);
+		}
+	}, [profileIndex]);
 
 	useEffect(() => {
 		// from weeklyMenu, get the menu id and get the full menu from makananJabar
@@ -146,7 +166,7 @@ export default function CreateMenu() {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ makananMini: makananJabarMini, jadwalMingguan: weeklyMenu, hari: hari }),
+			body: JSON.stringify({ makananMini: currentMakananMini, jadwalMingguan: weeklyMenu, hari: hari }),
 		});
 
 		const data = await response.json();
