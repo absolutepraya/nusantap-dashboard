@@ -108,7 +108,7 @@ const CustomTable: React.FC<CustomTableProps> = ({ data }) => {
 						borderColor: '#e5e7eb',
 						borderRadius: 'md',
 						// overflow: 'hidden',
-						minWidth: '1000px',
+						minWidth: '700px',
 					}}
 				>
 					<thead>

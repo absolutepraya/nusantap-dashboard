@@ -115,6 +115,7 @@ export default function CreateMenu() {
 	const [weeklyMenuData, setWeeklyMenuData] = useState<MakananDataItem[]>([]);
 	const [isLoading, setIsLoading] = useState<Record<string, boolean>>({});
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isLaporanModalOpened, setIsLaporanModalOpened] = useState(false);
 
 	useEffect(() => {
 		const makananJabarNama = makananJabar.map((makanan) => makanan.nama);
@@ -230,12 +231,16 @@ export default function CreateMenu() {
 					</p>
 				</div>
 
+				<div className="flex w-full flex-row items-center justify-between">
+					<p className="text-3xl font-bold">Generate Menu</p>
+				</div>
+
 				<div className="flex h-auto w-full flex-col">
 					<div className="flex w-full items-center justify-between">
 						<div className="flex flex-col pb-2">
-							<p className="text-sm text-gray-400">Estimasi Pengeluaran Minggu Ini:</p>
+							<p className="text-lg font-bold text-black">Estimasi Pengeluaran Minggu Ini:</p>
 							<div className="flex items-end gap-3 py-1">
-								<p className="text-5xl font-bold">
+								<p className="text-4xl font-bold">
 									{`${new Intl.NumberFormat('id-ID', {
 										style: 'currency',
 										currency: 'IDR',
@@ -246,14 +251,17 @@ export default function CreateMenu() {
 										minimumFractionDigits: 0,
 									}).format(priceRange.max)}`}
 								</p>
-								<p className="font-bold">/anak</p>
+								<p className="text-xl font-bold text-custblue">/anak</p>
 							</div>
 						</div>
 
 						<div className="flex gap-2">
 							<button
 								className="group relative flex h-12 w-fit flex-row items-center overflow-hidden rounded-md border border-blue-700 bg-custblue px-3 py-1 text-white"
-								onClick={() => setIsModalOpen(true)}
+								onClick={() => {
+									setIsModalOpen(true)
+									setIsLaporanModalOpened(true)
+								}}
 							>
 								<IconPackage size={24} />
 								<p className="text ml-2 pr-1 font-semibold">Laporan Bahan Pokok</p>
@@ -339,15 +347,19 @@ export default function CreateMenu() {
 														setIsMenuModalOpen(true);
 													}}
 												>
-													<img
-														src={menu?.image_url || undefined}
-														alt="menu"
-														className="h-full w-full object-cover"
-													/>
+													<div className="relative h-full w-full">
+														<img
+															src={menu?.image_url || undefined}
+															alt="menu"
+															className="relative h-full w-full object-cover"
+														></img>
+														<div className="absolute bottom-0 right-0 rounded bg-custblue px-2 py-1">
+															<p className="text-sm font-semibold text-white">Rp {menu?.harga_total}</p>
+														</div>
+													</div>
 												</div>
 												<div className="flex w-full justify-between">
 													<p className="text-sm font-semibold">{menu?.nama}</p>
-													<p className="text-sm font-semibold">{menu?.harga_total}</p>
 												</div>
 											</div>
 										))}
@@ -391,13 +403,13 @@ export default function CreateMenu() {
 							</SwiperSlide>
 						))}
 					</Swiper>
-					<div className="swiper-prev bg-red absolute bottom-1/2 left-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
+					<div className={`swiper-prev bg-red absolute bottom-1/2 left-4 z-50 h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white ${isModalOpen ? 'hidden' : 'flex'}`}>
 						<IconChevronLeft
 							size={24}
 							strokeWidth={3}
 						/>
 					</div>
-					<div className="swiper-next bg-red absolute bottom-1/2 right-9 z-50 flex h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white">
+					<div className={`swiper-next bg-red absolute bottom-1/2 right-4 z-50 h-12 w-12 translate-y-1/2 items-center justify-center rounded-lg bg-custblue text-white ${isModalOpen ? 'hidden' : 'flex'}`}>
 						<IconChevronRight
 							size={24}
 							strokeWidth={3}
