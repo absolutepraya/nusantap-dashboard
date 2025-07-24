@@ -449,7 +449,7 @@ export const makananJabar: MenuItem[] = [
 		nama: 'Nasi Sop Kambing dengan Sayur Wortel dan Jeruk',
 		harga_total: '16000',
 		nutrisi: 'Energi: 600 kal, Karbohidrat: 70 gr, Protein: 40 gr, Lemak: 25 gr',
-		image_url: 'https://cdns.klimg.com/merdeka.com/i/w/news/2020/08/06/1206033/content_images/670x335/20200806121801-1-6-resep-sop-kambing-gurih-enak-dan-tidak-amis-004-ayu-isti.jpg',
+		image_url: 'https://cdn0-production-images-kly.akamaized.net/jZA1w-rqRpEETSxrn9pE0yJEueE=/0x109:1999x1236/1200x675/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3188949/original/060668500_1595560664-sop_kambing.jpg',
 		bahan_pokok: [
 			{
 				nama_bahan: 'Beras Premium',
